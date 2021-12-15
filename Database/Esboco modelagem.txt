@@ -1,0 +1,42 @@
+Clinte
+
+UF
+
+Municipio
+ -UF
+
+Cultura
+ - nome
+
+Seguradora
+
+Propriedade
+ -Municipio
+ -Cliente
+ -Area (HA)
+ -nomePropriedade
+
+Taxa
+ -Seguradora
+ -Municipio
+ -Cultura
+ *VALOR TAXA*
+ - MaxSaca
+
+
+Cotacao
+ - idPropriedade
+ - idCultura
+ - idSeguradora
+ - idNivelCobertura
+ - idTaxa
+
+
+CALCULAR LMGA
+ - Area
+ - nivel de cobertura
+ - preço saca
+
+
+CALCULAR PREMIO
+ - LMGA * TAXA
