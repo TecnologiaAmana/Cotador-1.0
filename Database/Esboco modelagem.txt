@@ -1,14 +1,24 @@
-Clinte
+Clinte 	X
 
-UF
+UF X
 
-Municipio
+
+Municipio X
  -UF
 
-Cultura
+Cultura X
  - nome
 
-Seguradora
+Seguradora X
+ - nome
+
+Plantio
+ -idPlantio
+ -Seguradora
+ -Municipio
+ -Cultura
+ -MaxSubvencao
+
 
 Propriedade
  -Municipio
@@ -17,26 +27,90 @@ Propriedade
  -nomePropriedade
 
 Taxa
- -Seguradora
- -Municipio
- -Cultura
+ -idPlantio
  *VALOR TAXA*
  - MaxSaca
+ - LMGAReplantio (%)
+ - Produtividade esperada
 
 
 Cotacao
  - idPropriedade
- - idCultura
- - idSeguradora
- - idNivelCobertura
- - idTaxa
+   - Municipio
+   - Cliente
+   - Area
+   - Nome Propriedade
 
+ - idCultura
+   - nome da cultura
+
+ - idSeguradora
+   - nomeSeguradora
+
+ - idTaxa
+   - idPlantio
+   - MaxSaca
+   - LMGAReplantio (%)
+   - Produtividade esperada
+   - VALOR TAXA
+
+   
+
+
+LMGA >> 
 
 CALCULAR LMGA
- - Area
- - nivel de cobertura
- - preço saca
+ - Area  >> Não muda
+
+ - Produtividade Garantida 
+(Produtividade esperada * Nível de cobertura)
+
+ - preço saca  >> Não muda
 
 
 CALCULAR PREMIO
  - LMGA * TAXA
+
+PREMIO = LMGA * TAXA
+TAXA = PREMIO/LMGA*100
+
+Cotação 
+ - Cliente  < X
+ - Area  < X
+ - LMGA  < X
+ - LMGA (Replantio)  < X
+ - Municipio  < X
+ - Nivel de cobertura  < X
+ - Valor saca  < X
+ - Produtividade Garantida  < X
+ - Prémio (Básica s/Subvenção)  < X
+ - Prémio (Replantio s/Subvenção)  <  X
+ - Subvenção Federal < X
+ - Prémio (Básica c/Subvenção)  < X
+ - Prémio (Replantio c/Subvenção)  < X
+ - Seguradora < X
+
+Mascara
+ - Cliente  <
+ - Area  <
+ - LMGA (Básica)  <
+ - LMGA (Replantio)  <
+ - Municipio  <
+ - Nivel de cobertura  <
+ - Valor saca  <
+ - Produtividade Garantida  <
+ - Prémio (Básica s/Subvenção)  <
+ - Prémio (Replantio s/Subvenção)  <  
+ - Subvenção Federal < 
+ - Prémio (Básica c/Subvenção)  <
+ - Prémio (Replantio c/Subvenção)  <
+ - Seguradora <
+ - Prémio Por Ha (c/Subvenção)
+ - Prémio Por Ha (s/Subvenção)
+ 
+
+
+Nivel de cobertura (API)
+ - valor (65, 70)
+
+	

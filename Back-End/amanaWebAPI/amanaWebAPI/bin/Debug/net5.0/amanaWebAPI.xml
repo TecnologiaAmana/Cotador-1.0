@@ -1,0 +1,74 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>amanaWebAPI</name>
+    </assembly>
+    <members>
+        <member name="M:amanaWebAPI.Interfaces.ICulturaRepository.ListarTodas">
+            <summary>
+            Lista todas as culturas cadastradas
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:amanaWebAPI.Interfaces.IMunicipioRepository.ListarTodos">
+            <summary>
+            Lista todos os municipios cadastrados
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:amanaWebAPI.Interfaces.IMunicipioRepository.BuscarPeloUf(System.Int32)">
+            <summary>
+            Busca municipios através de seu Uf
+            </summary>
+            <param name="idUf">Uf dos municipios que serão buscados</param>
+            <returns></returns>
+        </member>
+        <member name="M:amanaWebAPI.Interfaces.INivelCoberturaRepository.ListarTodos">
+            <summary>
+            Lista todos os niveis de cobertura cadastrados
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:amanaWebAPI.Interfaces.IPlantioRepository.BuscarPorId(System.Int32)">
+            <summary>
+            Busca um plantio através de seu id
+            </summary>
+            <param name="idPlantio">Id do plantio a ser buscado</param>
+            <returns></returns>
+        </member>
+        <member name="M:amanaWebAPI.Interfaces.IPlantioRepository.BuscarComDados(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Busca um plantio através de seus dados
+            </summary>
+            <param name="idSeguradora"></param>
+            <param name="idMunicipio"></param>
+            <param name="idCultura"></param>
+            <returns></returns>
+        </member>
+        <member name="M:amanaWebAPI.Interfaces.ISeguradoraRepository.ListarTodas">
+            <summary>
+            Lista todas as seguradoras cadastradas
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:amanaWebAPI.Interfaces.ITaxaRepository.ListarTodas">
+            <summary>
+            Lista todas as taxas
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:amanaWebAPI.Interfaces.ITaxaRepository.BuscarDados(System.Int32)">
+            <summary>
+            Busca uma TAXA através do municipio e cultura 
+            </summary>
+            <param name="idPlantio"></param>
+            <returns></returns>
+        </member>
+        <member name="M:amanaWebAPI.Interfaces.IUfRepository.ListarTodos">
+            <summary>
+            Lista todos o UF's
+            </summary>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

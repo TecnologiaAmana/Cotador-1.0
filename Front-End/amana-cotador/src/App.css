@@ -1,0 +1,133 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+  font-family: 'Roboto', sans-serif;
+}
+
+.grid {
+  width: 80%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+.header {
+  display: flex;
+  justify-content: center;
+}
+
+.row_select {
+  display: flex;
+  justify-content: space-between;
+}
+
+
+.select_container {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 45px;
+}
+
+.select_title {
+  margin-bottom: 10px;
+
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 28px;
+  
+}
+
+.small {
+  font-size: 14px;
+}
+
+.select {
+  background: #A8CDC8;
+  /* SelectShadow */
+  
+  box-shadow: 0px 2px 4px 1px rgba(0, 0, 0, 0.15);
+  width: 285px;
+  height: 40px;
+}
+
+.input_mun {
+  padding: 10px;
+}
+
+.container_btn {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+
+}
+
+.section_result {
+   margin-bottom: 20px;
+}
+
+.btn_calcular {
+  background: #C86C50;
+  /* SelectShadow */
+  
+  width: 283.74px;
+  height: 48px;
+
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 19px;
+
+  cursor: pointer;
+}
+
+.btn_calcular:hover {
+  box-shadow: 0 0.5em 0.5em -0.4em black;
+  transform: translateY(-1px);
+}
+
+.result_container {
+  margin-top: 100px;
+}
+
+.campo_resultado {
+  display: flex;
+  justify-content: space-between;
+
+  width: 300px;
+}
+
+.campo_title {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.campo_content {
+  font-size: 14px;
+}
+
+.table_result {
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.table_result th, .table_result td {
+  border: 1px solid rgb(0, 0, 0);
+  padding: 8px;
+  text-align: center;
+}
+
+.table_result th {
+  background: #A8CDC8;
+}
+
+.table_result tr:nth-child(even){background-color: #f2f2f2;}
+
+.table_result tr:hover {
+  background-color: #ddd;
+}
