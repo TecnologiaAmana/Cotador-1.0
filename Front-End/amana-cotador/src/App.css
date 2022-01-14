@@ -55,6 +55,10 @@
   height: 40px;
 }
 
+.padding_input {
+  padding-left: 5px;
+}
+
 .input_mun {
   padding: 10px;
 }
@@ -105,6 +109,7 @@
 .campo_title {
   font-size: 16px;
   font-weight: bold;
+  text-transform: uppercase;
 }
 
 .campo_content {
@@ -113,17 +118,19 @@
 
 .table_result {
   border-collapse: collapse;
+  table-layout: fixed;
   margin-top: 10px;
 }
 
 .table_result th, .table_result td {
   border: 1px solid rgb(0, 0, 0);
-  padding: 8px;
+  padding: 5px;
   text-align: center;
 }
 
 .table_result th {
   background: #A8CDC8;
+  font-size: 16px;
 }
 
 .table_result tr:nth-child(even){background-color: #f2f2f2;}

@@ -21,5 +21,7 @@ namespace amanaWebAPI.Interfaces
         /// <param name="taxa"></param>
         /// <returns></returns>
         List<Taxa> BuscarDados(TaxaViewModel taxa);
+
+
     }
 }

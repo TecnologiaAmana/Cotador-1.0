@@ -14,15 +14,56 @@ namespace amanaWebAPI.Repositories
 
         public List<Municipio> BuscarPeloUf(int idUf)
         {
-            List<Municipio> municipios = ctx.Municipios.Where(m => m.IdUf == idUf).ToList();
+            List<Municipio> municipios = ctx.Municipios
+                .Select(m => new Municipio()
+                {
+                    IdMunicipio = m.IdMunicipio,
+                    IdUf = m.IdUf,
+                    NomeMunicipio = m.NomeMunicipio,
+                    IdUfNavigation = new Uf()
+                    {
+                        NomeUf = m.IdUfNavigation.NomeUf,
+                        Abreviacao = m.IdUfNavigation.Abreviacao
+                    }
+                })
+                .Where(m => m.IdUf == idUf).ToList();
 
             return municipios;
 
         }
 
+        public Municipio BuscarPorId(int idMunicipio)
+        {
+            return ctx.Municipios
+                .Select(m => new Municipio()
+                {
+                    IdMunicipio = m.IdMunicipio,
+                    IdUf = m.IdUf,
+                    NomeMunicipio = m.NomeMunicipio,
+                    IdUfNavigation = new Uf()
+                    {
+                        NomeUf = m.IdUfNavigation.NomeUf,
+                        Abreviacao = m.IdUfNavigation.Abreviacao
+                    }
+                })
+                .FirstOrDefault(m => m.IdMunicipio == idMunicipio);
+        }
+
         public List<Municipio> ListarTodos()
         {
-            return ctx.Municipios.ToList();
+            return ctx.Municipios
+                .Select(m => new Municipio()
+                {
+                    IdMunicipio = m.IdMunicipio,
+                    IdUf = m.IdUf,
+                    NomeMunicipio = m.NomeMunicipio,
+                    IdUfNavigation = new Uf()
+                    {
+                        NomeUf = m.IdUfNavigation.NomeUf,
+                        Abreviacao = m.IdUfNavigation.Abreviacao
+                    }
+                })
+                .ToList();
         }
     }
 }

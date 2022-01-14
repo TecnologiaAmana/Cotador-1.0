@@ -21,6 +21,11 @@ namespace amanaWebAPI.Controllers
             _ufRepository = new UfRepository();
         }
 
+
+        /// <summary>
+        /// Lista todos os UFS
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public IActionResult Get()
         {

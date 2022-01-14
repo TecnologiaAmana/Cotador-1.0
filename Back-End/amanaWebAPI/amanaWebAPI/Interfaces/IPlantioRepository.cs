@@ -23,5 +23,13 @@ namespace amanaWebAPI.Interfaces
         /// <param name="idCultura"></param>
         /// <returns></returns>
         Plantio BuscarComDados(int idSeguradora, int idMunicipio, int idCultura);
+
+        /// <summary>
+        /// Busca um plantio através do idCultra e idMunicipio, trazendo plantio de todas as seguradoras
+        /// </summary>
+        /// <param name="idCultura">id da Cultura</param>
+        /// <param name="idMunicipio">id do Municipio</param>
+        /// <returns></returns>
+        List<int> BuscarComCulturaMunicipio(int idCultura, int idMunicipio);
     }
 }

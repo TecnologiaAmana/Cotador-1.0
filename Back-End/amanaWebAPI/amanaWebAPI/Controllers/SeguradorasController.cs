@@ -21,6 +21,10 @@ namespace amanaWebAPI.Controllers
             _seguradoraRepository = new SeguradoraRepository();
         }
 
+        /// <summary>
+        /// Lista todas as seguradoras cadastradas
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public IActionResult Get()
         {

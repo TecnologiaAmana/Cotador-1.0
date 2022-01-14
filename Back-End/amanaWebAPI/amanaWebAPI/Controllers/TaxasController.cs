@@ -23,6 +23,10 @@ namespace amanaWebAPI.Controllers
             _taxaRepository = new TaxaRepository();
         }
 
+        /// <summary>
+        /// Lista todas as taxas cadastradas
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public IActionResult Get()
         {
@@ -38,6 +42,11 @@ namespace amanaWebAPI.Controllers
             }
         }
 
+        /// <summary>
+        /// Busca uma taxa atraves do seu plantio e area
+        /// </summary>
+        /// <param name="taxa">Informações de plantio e area para a busca</param>
+        /// <returns></returns>
         [HttpPost]
         public IActionResult GetByPlantio(TaxaViewModel taxa)
         {

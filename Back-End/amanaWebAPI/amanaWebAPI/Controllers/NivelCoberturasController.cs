@@ -20,7 +20,11 @@ namespace amanaWebAPI.Controllers
         {
             _nivelCoberturaRepository = new NivelCoberturaRepository();
         }
-
+        
+        /// <summary>
+        /// Lista todos os niveis de cobertura cadastrados
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public IActionResult Get()
         {

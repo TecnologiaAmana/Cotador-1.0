@@ -4,10 +4,101 @@
         <name>amanaWebAPI</name>
     </assembly>
     <members>
+        <member name="M:amanaWebAPI.Controllers.CulturasController.Get">
+            <summary>
+            Lista todas as culturas cadastradas
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:amanaWebAPI.Controllers.CulturasController.GetById(System.Int32)">
+            <summary>
+            Busca uma cultura atraves do id
+            </summary>
+            <param name="idCultura">Id da cultura a ser buscada</param>
+            <returns></returns>
+        </member>
+        <member name="M:amanaWebAPI.Controllers.MunicipiosController.Get">
+            <summary>
+            Lista todos os municipios
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:amanaWebAPI.Controllers.MunicipiosController.GetByIdUf(System.Int32)">
+            <summary>
+            Busca todos os municipios de um determinado UF
+            </summary>
+            <param name="idUf">Id do UF dos municipios a serem buscados</param>
+            <returns></returns>
+        </member>
+        <member name="M:amanaWebAPI.Controllers.MunicipiosController.GetById(System.Int32)">
+            <summary>
+            Busca um municipio atraves do seu id
+            </summary>
+            <param name="idMunicipio">Id do municipio a ser buscado</param>
+            <returns></returns>
+        </member>
+        <member name="M:amanaWebAPI.Controllers.NivelCoberturasController.Get">
+            <summary>
+            Lista todos os niveis de cobertura cadastrados
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:amanaWebAPI.Controllers.PlantiosController.GetByData(amanaWebAPI.ViewModels.PlantioViewModel)">
+            <summary>
+            Busca um plantio atraves do id da seguradora, municipio e cultura
+            </summary>
+            <param name="plantio">Objeto plantio com as informações necessárias para busca</param>
+            <returns></returns>
+        </member>
+        <member name="M:amanaWebAPI.Controllers.SeguradorasController.Get">
+            <summary>
+            Lista todas as seguradoras cadastradas
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:amanaWebAPI.Controllers.TaxasController.Get">
+            <summary>
+            Lista todas as taxas cadastradas
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:amanaWebAPI.Controllers.TaxasController.GetByPlantio(amanaWebAPI.ViewModels.TaxaViewModel)">
+            <summary>
+            Busca uma taxa atraves do seu plantio e area
+            </summary>
+            <param name="taxa">Informações de plantio e area para a busca</param>
+            <returns></returns>
+        </member>
+        <member name="M:amanaWebAPI.Controllers.UfsController.Get">
+            <summary>
+            Lista todos os UFS
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:amanaWebAPI.Interfaces.IClienteRepository.ListarTodos">
+            <summary>
+            Lista todos os clientes cadastrados
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:amanaWebAPI.Interfaces.IClienteRepository.BuscarPorId(System.Int32)">
+            <summary>
+            Busca um cliente atraves do seu id
+            </summary>
+            <param name="idCliente">Id do cliente a ser busacado</param>
+            <returns></returns>
+        </member>
         <member name="M:amanaWebAPI.Interfaces.ICulturaRepository.ListarTodas">
             <summary>
             Lista todas as culturas cadastradas
             </summary>
+            <returns></returns>
+        </member>
+        <member name="M:amanaWebAPI.Interfaces.ICulturaRepository.BuscarPorId(System.Int32)">
+            <summary>
+            Busca uma cultura atraves de seu id
+            </summary>
+            <param name="idCultura">Id da cultura a ser buscada</param>
             <returns></returns>
         </member>
         <member name="M:amanaWebAPI.Interfaces.IMunicipioRepository.ListarTodos">
@@ -21,6 +112,13 @@
             Busca municipios através de seu Uf
             </summary>
             <param name="idUf">Uf dos municipios que serão buscados</param>
+            <returns></returns>
+        </member>
+        <member name="M:amanaWebAPI.Interfaces.IMunicipioRepository.BuscarPorId(System.Int32)">
+            <summary>
+            Busca um municipio através de seu id
+            </summary>
+            <param name="idMunicipio">Id do municipio a ser buscado</param>
             <returns></returns>
         </member>
         <member name="M:amanaWebAPI.Interfaces.INivelCoberturaRepository.ListarTodos">
@@ -45,6 +143,14 @@
             <param name="idCultura"></param>
             <returns></returns>
         </member>
+        <member name="M:amanaWebAPI.Interfaces.IPlantioRepository.BuscarComCulturaMunicipio(System.Int32,System.Int32)">
+            <summary>
+            Busca um plantio através do idCultra e idMunicipio, trazendo plantio de todas as seguradoras
+            </summary>
+            <param name="idCultura">id da Cultura</param>
+            <param name="idMunicipio">id do Municipio</param>
+            <returns></returns>
+        </member>
         <member name="M:amanaWebAPI.Interfaces.ISeguradoraRepository.ListarTodas">
             <summary>
             Lista todas as seguradoras cadastradas
@@ -57,11 +163,11 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="M:amanaWebAPI.Interfaces.ITaxaRepository.BuscarDados(System.Int32)">
+        <member name="M:amanaWebAPI.Interfaces.ITaxaRepository.BuscarDados(amanaWebAPI.ViewModels.TaxaViewModel)">
             <summary>
-            Busca uma TAXA através do municipio e cultura 
+            Busca e calcula taxa usando area e plantio
             </summary>
-            <param name="idPlantio"></param>
+            <param name="taxa"></param>
             <returns></returns>
         </member>
         <member name="M:amanaWebAPI.Interfaces.IUfRepository.ListarTodos">

@@ -32,5 +32,7 @@ namespace amanaWebAPI.Domains
         public double? PremioMedioSubvencao { get; set; }
 
         public double? PremioTotal { get; set; }
+
+        public int? Area { get; set; }
     }
 }

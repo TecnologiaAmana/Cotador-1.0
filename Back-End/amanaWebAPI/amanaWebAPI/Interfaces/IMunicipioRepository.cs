@@ -20,5 +20,12 @@ namespace amanaWebAPI.Interfaces
         /// <param name="idUf">Uf dos municipios que serão buscados</param>
         /// <returns></returns>
         List<Municipio> BuscarPeloUf(int idUf);
+
+        /// <summary>
+        /// Busca um municipio através de seu id
+        /// </summary>
+        /// <param name="idMunicipio">Id do municipio a ser buscado</param>
+        /// <returns></returns>
+        Municipio BuscarPorId(int idMunicipio);
     }
 }

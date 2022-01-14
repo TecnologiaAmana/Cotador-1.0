@@ -8,7 +8,6 @@ namespace amanaWebAPI.ViewModels
 {
     public class PlantioViewModel
     {
-        [Required(ErrorMessage ="É necessário informar a seguradora")]
         public short IdSeguradora { get; set; }
         [Required(ErrorMessage = "É necessário informar o município")]
         public short IdMunicipio { get; set; }

@@ -13,5 +13,12 @@ namespace amanaWebAPI.Interfaces
         /// </summary>
         /// <returns></returns>
         List<Cultura> ListarTodas();
+
+        /// <summary>
+        /// Busca uma cultura atraves de seu id
+        /// </summary>
+        /// <param name="idCultura">Id da cultura a ser buscada</param>
+        /// <returns></returns>
+        Cultura BuscarPorId(int idCultura);
     }
 }

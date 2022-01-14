@@ -12,6 +12,11 @@ namespace amanaWebAPI.Repositories
     {
         CotadorContext ctx = new CotadorContext();
 
+        public Cultura BuscarPorId(int idCultura)
+        {
+            return ctx.Culturas.Where(c => c.IdCultura == idCultura).FirstOrDefault();
+        }
+
         public List<Cultura> ListarTodas()
         {
             return ctx.Culturas.ToList();

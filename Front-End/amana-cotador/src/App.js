@@ -5,19 +5,20 @@ import './App.css';
 import logo from './assets/logoAmana.png'
 
 function App() {
-  const [municipios, setMunicipios] = useState([]);
   const [seguradoras, setSeguradoras] = useState([]);
   const [culturas, setCulturas] = useState([]);
-  const [taxas, setTaxas] = useState([]);
-  const [niveisCobertura, setNiveisCobertura] = useState([]);
-  const [ufs, setUfs] = useState([]);
+  const [municipios, setMunicipios] = useState([]);
   const [idSeguradora, setIdSeguradora] = useState(0);
   const [idMunicipio, setIdMunicipio] = useState(0);
   const [idCultura, setIdCultura] = useState(0);
-  const [idCobertura, setIdCobertura] = useState(0);
-  const [plantioBuscaTaxa, setPlantioBuscaTaxa] = useState(0);
+  const [area, setArea] = useState(0);
+  const [taxas, setTaxas] = useState([]);
+  const [data, setData] = useState(new Date());
+  const [cliente, setCliente] = useState("");
+  const [culturaBuscada, setCulturaBuscada] = useState({});
+  const [ufs, setUfs] = useState([]);
 
-
+  const [municipioBuscado, setMunicipioBuscado] = useState({})
 
   function BuscarMunicipios() {
     api.get('Municipios').then(response => {
@@ -39,14 +40,6 @@ function App() {
     api.get('seguradoras').then(response => {
       if (response.status === 200) {
         setSeguradoras(response.data)
-      }
-    })
-  }
-
-  function BuscarNiveisCobertura() {
-    api.get('NivelCoberturas').then(response => {
-      if (response.status === 200) {
-        setNiveisCobertura(response.data)
       }
     })
   }
@@ -73,18 +66,56 @@ function App() {
   //   })
   // }
 
+
+  function BuscaMunicipioPeloID(idMunicipio) {
+    api.get("Municipios/" + idMunicipio)
+      .then(resp => {
+        if (resp.status === 200) {
+          setMunicipioBuscado(resp.data)
+        }
+      })
+  }
+
   function BuscarTaxas(e) {
     e.preventDefault();
-    const data = {
-      idMunicipio: idMunicipio,
-      idSeguradora: idSeguradora,
-      idCultura: idCultura,
-      idCobertura: idCobertura
+    BuscaMunicipioPeloID(idMunicipio);
+    setTaxas([])
+    setData(new Date())
+
+    const dataPlantio = {
+      IdMunicipio: idMunicipio,
+      IdSeguradora: idSeguradora,
+      IdCultura: idCultura,
     }
 
-    api.post('plantios', data).then(response => {
+    api.get("culturas/" + idCultura).then(response => {
       if (response.status === 200) {
-        api.get('taxas/' + response.data.idPlantio).then(resp => {
+        setCulturaBuscada(response.data)
+      }
+    })
+
+    api.post('plantios', dataPlantio).then(response => {
+
+      if (response.status === 200) {
+
+        var dataTaxa;
+
+        if (response.data.idMunicipio !== undefined) {
+          dataTaxa = {
+            IdPlantio: response.data.idPlantio,
+            Area: area,
+          }
+        }
+        else {
+          dataTaxa =
+          {
+            Plantios: response.data,
+            Area: area
+          }
+
+        }
+        api.post('taxas', dataTaxa).then(resp => {
+
           if (resp.status === 200) {
             setTaxas(resp.data)
             console.log(resp.data)
@@ -99,7 +130,6 @@ function App() {
   useEffect(() => {
     BuscarCulturas()
     BuscarSeguradoras()
-    BuscarNiveisCobertura()
     BuscarMunicipios()
     BuscarUfs()
   }, [])
@@ -162,21 +192,17 @@ function App() {
           </div>
 
           <div className="row_select">
-            {/* Nivel Cobertura  */}
-            <div className='select_container'>
-              <span className='select_title small'>Nivel de Cobertura</span>
-              <select required onChange={(campo) => setIdCobertura(campo.target.value)} className='select' name="cobertura" id="">
-                {niveisCobertura.map(nivel => {
-                  return (
-                    <option key={nivel.idNivelCobertura} value={nivel.idNivelCobertura}>{nivel.valorCobertura}</option>
-                  )
-                })}
-              </select>
-            </div>
+
             {/* ÁREA  */}
             <div className='select_container'>
               <span className='select_title small'>Área</span>
-              <input className='select' type="number" />
+              <input required onChange={(campo) => setArea(campo.target.value)} className='select padding_input' type="number" />
+            </div>
+            
+            {/* CLIENTES  */}
+            <div className='select_container'>
+              <span className='select_title small'>Cliente</span>
+              <input onChange={(campo) => setCliente(campo.target.value)} className='select padding_input' value={cliente} type="text" name="" id="" />
             </div>
           </div>
 
@@ -188,28 +214,30 @@ function App() {
           <div className="result_container">
             <div className="campo_resultado">
               <span className="campo_title">Segurado</span>
-              <span className="campo_content">Edson Namiki</span>
+              <span className="campo_content">{cliente}</span>
             </div>
-            <div className="campo_resultado">
-              <span className="campo_title">CPF</span>
-              <span className="campo_content">45187584945</span>
-            </div>
-            <div className="campo_resultado">
-              <span className="campo_title">MUNICÍPIO/UF</span>
-              <span className="campo_content">Perreira Barreto - SP</span>
-            </div>
+            {Object.keys(municipioBuscado).length == 0 ? <span></span> :
+              <div className="campo_resultado">
+                <span className="campo_title">Municipio</span>
+                <span className="campo_content">{municipioBuscado.nomeMunicipio + " - " + municipioBuscado.idUfNavigation.abreviacao}</span>
+              </div>}
+
+            {Object.keys(culturaBuscada).length == 0 ? <span></span> : 
+            
             <div className="campo_resultado">
               <span className="campo_title">CULTURA</span>
-              <span className="campo_content">Milho Safrinha</span>
+              <span className="campo_content">{culturaBuscada.nomeCultura}</span>
             </div>
-            <div className="campo_resultado">
-              <span className="campo_title">ÁREA SEGURADA</span>
-              <span className="campo_content">316</span>
-            </div>
+            }
+            
+
             <div className="campo_resultado">
               <span className="campo_title">DATA COTAÇÃO</span>
-              <span className="campo_content">23/12/2021</span>
+              <span className="campo_content">{Intl.DateTimeFormat("pt-BR", {
+                year: 'numeric', month: 'numeric', day: "numeric"
+              }).format(data)}</span>
             </div>
+
             <table className="table_result">
               <thead>
                 <tr>
@@ -236,16 +264,19 @@ function App() {
                     return (
                       <tr key={taxa.idTaxa}>
                         <td>{taxa.idPlantioNavigation.idSeguradoraNavigation.nomeSeguradora}</td>
-                        <td>100</td>
+                        <td>{taxa.area}</td>
                         <td>{taxa.maxSaca}</td>
                         <td>{taxa.idNivelCoberturaNavigation.valorCobertura}</td>
-                        <td>{taxa.produtivadeGarantida}</td>
-                        <td>{Math.trunc(taxa.lmgabasica)}</td>
+                        <td>{taxa.produtivadeGarantida.toFixed(2)}</td>
+                        <td>{taxa.lmgabasica.toFixed(2)}</td>
+                        <td>{taxa.valorLmgaReplantio.toFixed(2)}</td>
                         <td>{taxa.premioBasica.toFixed(2)}</td>
-                        <td>??</td>
-                        <td>??</td>
-                        <td>{ }</td>
-                        <td>??</td>
+                        <td>{taxa.premioReplantio.toFixed(2)}</td>
+                        <td>{taxa.premioTotal.toFixed(2)}</td>
+                        <td>{taxa.subvencao.toFixed(2)}</td>
+                        <td>{taxa.premioSubvencao.toFixed(2)}</td>
+                        <td>{taxa.premioMedio.toFixed(2)}</td>
+                        <td>{taxa.premioMedioSubvencao.toFixed(2)}</td>
                       </tr>
                     )
                   })
