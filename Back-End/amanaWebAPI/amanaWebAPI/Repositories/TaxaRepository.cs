@@ -66,7 +66,7 @@ namespace amanaWebAPI.Repositories
                             NomeSeguradora = t.IdPlantioNavigation.IdSeguradoraNavigation.NomeSeguradora
                         }
                     },
-                    ProdutivadeGarantida = (t.ProdutividadeEsperada / taxa.Area) * t.IdNivelCoberturaNavigation.ValorCobertura,
+                    ProdutivadeGarantida = (t.ProdutividadeEsperada) * t.IdNivelCoberturaNavigation.ValorCobertura / 100,
                 })
                 .Where(t => t.IdPlantio == taxa.IdPlantio)
                 .ToList();
@@ -76,15 +76,15 @@ namespace amanaWebAPI.Repositories
 
                     item.Lmgabasica = taxa.Area * item.ProdutivadeGarantida * item.MaxSaca;
 
-                    item.ValorLmgaReplantio = item.Lmgareplantio * item.Lmgabasica / taxa.Area;
+                    item.ValorLmgaReplantio = item.Lmgareplantio * item.Lmgabasica / 100;
 
-                    item.PremioBasica = item.Lmgabasica / taxa.Area * item.ValorTaxaBasica;
+                    item.PremioBasica = item.Lmgabasica * item.ValorTaxaBasica;
 
-                    item.PremioReplantio = item.ValorTaxaReplantio / taxa.Area * item.ValorLmgaReplantio;
+                    item.PremioReplantio = item.ValorTaxaReplantio * item.ValorLmgaReplantio;
 
                     item.PremioTotal = item.PremioReplantio + item.PremioBasica;
 
-                    item.Subvencao = item.PremioTotal * 40 / taxa.Area;
+                    item.Subvencao = item.PremioTotal * 40 / 100;
 
                     if (item.Subvencao > 60000)
                     {
@@ -148,7 +148,7 @@ namespace amanaWebAPI.Repositories
                             NomeSeguradora = t.IdPlantioNavigation.IdSeguradoraNavigation.NomeSeguradora
                         }
                     },
-                    ProdutivadeGarantida = (t.ProdutividadeEsperada / taxa.Area) * t.IdNivelCoberturaNavigation.ValorCobertura,
+                    ProdutivadeGarantida = (t.ProdutividadeEsperada) * t.IdNivelCoberturaNavigation.ValorCobertura / 100,
                 })
                 .Where(t => taxa.Plantios.Contains(t.IdPlantio))
                 .ToList();
@@ -160,13 +160,13 @@ namespace amanaWebAPI.Repositories
 
                 item.ValorLmgaReplantio = item.Lmgareplantio * item.Lmgabasica / taxa.Area;
 
-                item.PremioBasica = item.Lmgabasica / taxa.Area * item.ValorTaxaBasica;
+                item.PremioBasica = item.Lmgabasica * item.ValorTaxaBasica;
 
-                item.PremioReplantio = item.ValorTaxaReplantio / taxa.Area * item.ValorLmgaReplantio;
+                item.PremioReplantio = item.ValorTaxaReplantio * item.ValorLmgaReplantio;
 
                 item.PremioTotal = item.PremioReplantio + item.PremioBasica;
 
-                item.Subvencao = item.PremioTotal * 40 / taxa.Area;
+                item.Subvencao = item.PremioTotal * 40 / 100;
 
                 if (item.Subvencao > 60000)
                 {
@@ -231,20 +231,20 @@ namespace amanaWebAPI.Repositories
                                     NomeSeguradora = t.IdPlantioNavigation.IdSeguradoraNavigation.NomeSeguradora
                                 }
                             },
-                            ProdutivadeGarantida = (t.ProdutividadeEsperada / 100) * t.IdNivelCoberturaNavigation.ValorCobertura,
+                            ProdutivadeGarantida = (t.ProdutividadeEsperada) * t.IdNivelCoberturaNavigation.ValorCobertura / 100,
                         })
                         .ToList();
 
             foreach (Taxa item in taxas)
             {
 
-                item.Lmgabasica = 100 * item.ProdutivadeGarantida * item.MaxSaca;
+                item.Lmgabasica = item.Area * item.ProdutivadeGarantida * item.MaxSaca;
 
                 item.ValorLmgaReplantio = item.Lmgareplantio * item.Lmgabasica / 100;
 
-                item.PremioBasica = item.Lmgabasica / 100 * item.ValorTaxaBasica;
+                item.PremioBasica = item.Lmgabasica * item.ValorTaxaBasica;
 
-                item.PremioReplantio = item.ValorTaxaReplantio / 100 * item.ValorLmgaReplantio;
+                item.PremioReplantio = item.ValorTaxaReplantio * item.ValorLmgaReplantio;
 
                 item.PremioTotal = item.PremioReplantio + item.PremioBasica;
 
