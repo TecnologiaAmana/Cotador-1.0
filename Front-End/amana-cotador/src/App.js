@@ -3,7 +3,6 @@ import api from './services/api'
 
 import './App.css';
 import logo from './assets/logoAmana.png'
-import { getByTestId, queryAllByTestId } from "@testing-library/react";
 
 function App() {
   const [seguradoras, setSeguradoras] = useState([]);
@@ -17,7 +16,6 @@ function App() {
   const [data, setData] = useState(new Date());
   const [cliente, setCliente] = useState("");
   const [culturaBuscada, setCulturaBuscada] = useState({});
-  const [ufs, setUfs] = useState([]);
 
   const [municipioBuscado, setMunicipioBuscado] = useState({})
 
@@ -44,28 +42,6 @@ function App() {
       }
     })
   }
-
-  function BuscarUfs() {
-    api.get('ufs').then(response => {
-      if (response.status === 200) {
-        setUfs(response.data)
-      }
-    })
-  }
-
-  // function BuscarPlantio() {
-  //   const data = {
-  //     idMunicipio: idMunicipio,
-  //     idSeguradora: idSeguradora,
-  //     idCultura: idCultura
-  //   }
-
-  //   api.post('plantios', data).then(response => {
-  //     if(response.status === 200) {
-  //       setPlantioBuscaTaxa(response.data);
-  //     }
-  //   })
-  // }
 
 
   function BuscaMunicipioPeloID(idMunicipio) {
@@ -131,7 +107,6 @@ function App() {
     BuscarCulturas()
     BuscarSeguradoras()
     BuscarMunicipios()
-    BuscarUfs()
   }, [])
 
 
@@ -216,12 +191,12 @@ function App() {
                 <span className="campo_title">Segurado</span>
                 <span className="campo_content">{cliente}</span>
               </div>
-              {Object.keys(municipioBuscado).length == 0 ? <span></span> :
+              {Object.keys(municipioBuscado).length === 0 ? <span></span> :
                 <div className="campo_resultado">
                   <span className="campo_title">Municipio</span>
                   <span className="campo_content">{municipioBuscado.nomeMunicipio + " - " + municipioBuscado.idUfNavigation.abreviacao}</span>
                 </div>}
-              {Object.keys(culturaBuscada).length == 0 ? <span></span> :
+              {Object.keys(culturaBuscada).length === 0 ? <span></span> :
           
               <div className="campo_resultado">
                 <span className="campo_title">CULTURA</span>
