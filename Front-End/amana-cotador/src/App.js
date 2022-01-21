@@ -3,6 +3,7 @@ import api from './services/api'
 
 import './App.css';
 import logo from './assets/logoAmana.png'
+import { getByTestId, queryAllByTestId } from "@testing-library/react";
 
 function App() {
   const [seguradoras, setSeguradoras] = useState([]);
@@ -124,9 +125,8 @@ function App() {
         })
       }
     })
-
   }
-
+  
   useEffect(() => {
     BuscarCulturas()
     BuscarSeguradoras()
@@ -209,95 +209,94 @@ function App() {
           <div className="container_btn"><button type="submit" className='btn_calcular'>Calcular</button></div>
         </form>
 
-
-        <section className="section_result">
-          <div className="result_container">
-            <div className="campo_resultado">
-              <span className="campo_title">Segurado</span>
-              <span className="campo_content">{cliente}</span>
-            </div>
-            {Object.keys(municipioBuscado).length == 0 ? <span></span> :
+        <div id="resultado_div">
+          <section id="resultado" className="section_result">
+            <div className="result_container">
               <div className="campo_resultado">
-                <span className="campo_title">Municipio</span>
-                <span className="campo_content">{municipioBuscado.nomeMunicipio + " - " + municipioBuscado.idUfNavigation.abreviacao}</span>
-              </div>}
-
-            {Object.keys(culturaBuscada).length == 0 ? <span></span> : 
-            
-            <div className="campo_resultado">
-              <span className="campo_title">CULTURA</span>
-              <span className="campo_content">{culturaBuscada.nomeCultura}</span>
+                <span className="campo_title">Segurado</span>
+                <span className="campo_content">{cliente}</span>
+              </div>
+              {Object.keys(municipioBuscado).length == 0 ? <span></span> :
+                <div className="campo_resultado">
+                  <span className="campo_title">Municipio</span>
+                  <span className="campo_content">{municipioBuscado.nomeMunicipio + " - " + municipioBuscado.idUfNavigation.abreviacao}</span>
+                </div>}
+              {Object.keys(culturaBuscada).length == 0 ? <span></span> :
+          
+              <div className="campo_resultado">
+                <span className="campo_title">CULTURA</span>
+                <span className="campo_content">{culturaBuscada.nomeCultura}</span>
+              </div>
+              }
+          
+              <div className="campo_resultado">
+                <span className="campo_title">DATA COTAÇÃO</span>
+                <span className="campo_content">{Intl.DateTimeFormat("pt-BR", {
+                  year: 'numeric', month: 'numeric', day: "numeric"
+                }).format(data)}</span>
+              </div>
+              <table className="table_result" id="main_table">
+                <thead>
+                  <tr>
+                    <th>Seguradora</th>
+                    <th>Área (HA)</th>
+                    <th>Valor Saca</th>
+                    <th>Nivel de Cobertura</th>
+                    <th>Produtividade Garantida</th>
+                    <th>LMGA Básica (R$)</th>
+                    <th>LMGA Replantio (R$)</th>
+                    <th>Prêmio Basica (R$)</th>
+                    <th>Prêmio Replantio (R$)</th>
+                    <th>Prêmio Total (R$)</th>
+                    <th>Subvenção Federal (R$)</th>
+                    <th>Prêmio C/Desconto Subv (R$)</th>
+                    <th>Prêmio Médio S/Subv (R$/HA)</th>
+                    <th>Prêmio Médio C/Subv (R$/HA)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {
+                    taxas.map(taxa => {
+                      return (
+                        <tr key={taxa.idTaxa}>
+                          <td>{taxa.idPlantioNavigation.idSeguradoraNavigation.nomeSeguradora}</td>
+                          <td>{taxa.area}</td>
+                          <td>{taxa.maxSaca}</td>
+                          <td>{taxa.idNivelCoberturaNavigation.valorCobertura}</td>
+                          <td>{taxa.produtivadeGarantida.toFixed(2)}</td>
+                          <td>{taxa.lmgabasica.toFixed(2)}</td>
+                          <td>{taxa.valorLmgaReplantio.toFixed(2)}</td>
+                          <td>{taxa.premioBasica.toFixed(2)}</td>
+                          <td>{taxa.premioReplantio.toFixed(2)}</td>
+                          <td>{taxa.premioTotal.toFixed(2)}</td>
+                          <td>{taxa.subvencao.toFixed(2)}</td>
+                          <td>{taxa.premioSubvencao.toFixed(2)}</td>
+                          <td>{taxa.premioMedio.toFixed(2)}</td>
+                          <td>{taxa.premioMedioSubvencao.toFixed(2)}</td>
+                        </tr>
+                      )
+                    })
+                  }
+                  {/* <tr>
+                    <td>SWISS RE</td>
+                    <td>Básica</td>
+                    <td>140</td>
+                    <td>110</td>
+                    <td>36,95</td>
+                    <td>576.533,07</td>
+                    <td>64.859,00</td>
+                    <td>12.971.80</td>
+                    <td>51.887,20</td>
+                    <td>586,11</td>
+                    <td>468,89</td>
+                  </tr> */}
+                </tbody>
+              </table>
             </div>
-            }
-            
 
-            <div className="campo_resultado">
-              <span className="campo_title">DATA COTAÇÃO</span>
-              <span className="campo_content">{Intl.DateTimeFormat("pt-BR", {
-                year: 'numeric', month: 'numeric', day: "numeric"
-              }).format(data)}</span>
-            </div>
-
-            <table className="table_result">
-              <thead>
-                <tr>
-                  <th>Seguradora</th>
-                  <th>Área (HA)</th>
-                  <th>Valor Saca</th>
-                  <th>Nivel de Cobertura</th>
-                  <th>Produtividade Garantida</th>
-                  <th>LMGA Básica (R$)</th>
-                  <th>LMGA Replantio (R$)</th>
-                  <th>Prêmio Basica (R$)</th>
-                  <th>Prêmio Replantio (R$)</th>
-                  <th>Prêmio Total (R$)</th>
-                  <th>Subvenção Federal (R$)</th>
-                  <th>Prêmio C/Desconto Subv (R$)</th>
-                  <th>Prêmio Médio S/Subv (R$/HA)</th>
-                  <th>Prêmio Médio C/Subv (R$/HA)</th>
-
-                </tr>
-              </thead>
-              <tbody>
-                {
-                  taxas.map(taxa => {
-                    return (
-                      <tr key={taxa.idTaxa}>
-                        <td>{taxa.idPlantioNavigation.idSeguradoraNavigation.nomeSeguradora}</td>
-                        <td>{taxa.area}</td>
-                        <td>{taxa.maxSaca}</td>
-                        <td>{taxa.idNivelCoberturaNavigation.valorCobertura}</td>
-                        <td>{taxa.produtivadeGarantida.toFixed(2)}</td>
-                        <td>{taxa.lmgabasica.toFixed(2)}</td>
-                        <td>{taxa.valorLmgaReplantio.toFixed(2)}</td>
-                        <td>{taxa.premioBasica.toFixed(2)}</td>
-                        <td>{taxa.premioReplantio.toFixed(2)}</td>
-                        <td>{taxa.premioTotal.toFixed(2)}</td>
-                        <td>{taxa.subvencao.toFixed(2)}</td>
-                        <td>{taxa.premioSubvencao.toFixed(2)}</td>
-                        <td>{taxa.premioMedio.toFixed(2)}</td>
-                        <td>{taxa.premioMedioSubvencao.toFixed(2)}</td>
-                      </tr>
-                    )
-                  })
-                }
-                {/* <tr>
-                  <td>SWISS RE</td>
-                  <td>Básica</td>
-                  <td>140</td>
-                  <td>110</td>
-                  <td>36,95</td>
-                  <td>576.533,07</td>
-                  <td>64.859,00</td>
-                  <td>12.971.80</td>
-                  <td>51.887,20</td>
-                  <td>586,11</td>
-                  <td>468,89</td>
-                </tr> */}
-              </tbody>
-            </table>
-          </div>
-        </section>
+            <button>TESTE</button>
+          </section>
+        </div>
       </main>
     </div>
   );
