@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import api from './services/api'
 
 import './App.css';
+import CotacoesPDF from "./components/CotacoesPDF";
 import logo from './assets/logoAmana.png'
 
 function App() {
@@ -155,12 +156,18 @@ function App() {
             <div className='select_container'>
               <span className='select_title'>Municipios</span>
 
-              <input onChange={(campo) => setIdMunicipio(campo.target.value)} required type='text' className='select input_mun' list="municipios" />
+              <select onChange={(campo) => setIdMunicipio(campo.target.value)} required className='select' name="municipio">
+                {municipios.map(m => {
+                  return (<option key={m.idMunicipio} name={m.idMunicipio} value={m.idMunicipio}>{m.nomeMunicipio} - {m.idUfNavigation.abreviacao}</option>)
+                }) }
+              </select>
+
+              {/* <input onChange={(campo) => setIdMunicipio(campo.target.value)} required type='text' className='select input_mun' list="municipios" />
               <datalist id='municipios'>
                 {municipios.map(m => {
                   return (<option key={m.idMunicipio} data-id={m.idMunicipio} name={m.idMunicipio} value={m.idMunicipio}>{m.nomeMunicipio}</option>)
                 })}
-              </datalist>
+              </datalist> */}
 
             </div>
 
@@ -252,24 +259,11 @@ function App() {
                       )
                     })
                   }
-                  {/* <tr>
-                    <td>SWISS RE</td>
-                    <td>Básica</td>
-                    <td>140</td>
-                    <td>110</td>
-                    <td>36,95</td>
-                    <td>576.533,07</td>
-                    <td>64.859,00</td>
-                    <td>12.971.80</td>
-                    <td>51.887,20</td>
-                    <td>586,11</td>
-                    <td>468,89</td>
-                  </tr> */}
                 </tbody>
               </table>
             </div>
 
-            <button>TESTE</button>
+            <button onClick={(e) => CotacoesPDF(taxas)}>TESTE</button>
           </section>
         </div>
       </main>
