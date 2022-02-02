@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "caP5m4xuXKzCHGh07njUYSUUmn22qpc/LEFnTOj88FZucFi2QX7cXi5kCiLZpKQDK0YTj4g3MjZO7r7xXUOkxA==",
+  "dgSpecHash": "ANNUiz3CNRNY+e8JYL7XoEpphJiY3t60kY9t7Z9NbmzUxo3oFwjUXeJUpwKscpnd8rGxqJedWJbDck1CvGxl2Q==",
   "success": true,
-  "projectFilePath": "C:\\Users\\gugag\\OneDrive\\Área de Trabalho\\Amana\\Back-End\\amanaWebAPI\\amanaWebAPI\\amanaWebAPI.csproj",
+  "projectFilePath": "C:\\Users\\gugag\\OneDrive\\Área de Trabalho\\amanaCotador\\Back-End\\amanaWebAPI\\amanaWebAPI\\amanaWebAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\gugag\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\gugag\\.nuget\\packages\\microsoft.aspnetcore.jsonpatch\\5.0.13\\microsoft.aspnetcore.jsonpatch.5.0.13.nupkg.sha512",
