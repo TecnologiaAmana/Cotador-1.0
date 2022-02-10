@@ -15,9 +15,27 @@ function CotacoesPDF (cotacoes) {
         }
     ];
 
-    const details = [];
+    const details = [
+        {
+            table: {
 
-    const footer = [];
+            },
+            layout: 'headerLineOnly'  
+        }
+    ];
+
+    function Footer(currentPage, pageCount) {
+
+        return [
+            {
+                text: currentPage + ' / ' + pageCount,
+                alignment: 'right',
+                fontSize: 9,
+                margin: [2,10,20,0]
+
+            }
+        ]
+    }
 
     const docDefinitions = {
         pageSize: 'A4',
@@ -25,7 +43,7 @@ function CotacoesPDF (cotacoes) {
 
         header: [reportTitle],
         content: [details],
-        footer: [footer]
+        footer: [Footer]
     }
 
 

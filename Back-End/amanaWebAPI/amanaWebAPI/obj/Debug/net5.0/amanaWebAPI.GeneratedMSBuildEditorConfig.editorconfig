@@ -7,8 +7,4 @@ build_property.InvariantGlobalization =
 build_property.PlatformNeutralAssembly = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = amanaWebAPI
-<<<<<<< HEAD
-build_property.ProjectDir = C:\Users\43017102807\Desktop\amanaCotador\Back-End\amanaWebAPI\amanaWebAPI\
-=======
 build_property.ProjectDir = C:\Users\gugag\OneDrive\Área de Trabalho\amanaCotador\Back-End\amanaWebAPI\amanaWebAPI\
->>>>>>> main

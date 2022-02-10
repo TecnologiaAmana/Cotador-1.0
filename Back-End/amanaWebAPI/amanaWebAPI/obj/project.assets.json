@@ -7530,32 +7530,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\43017102807\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\gugag\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-<<<<<<< HEAD
-      "projectUniqueName": "C:\\Users\\43017102807\\Desktop\\amanaCotador\\Back-End\\amanaWebAPI\\amanaWebAPI\\amanaWebAPI.csproj",
-      "projectName": "amanaWebAPI",
-      "projectPath": "C:\\Users\\43017102807\\Desktop\\amanaCotador\\Back-End\\amanaWebAPI\\amanaWebAPI\\amanaWebAPI.csproj",
-      "packagesPath": "C:\\Users\\43017102807\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\43017102807\\Desktop\\amanaCotador\\Back-End\\amanaWebAPI\\amanaWebAPI\\obj\\",
-=======
       "projectUniqueName": "C:\\Users\\gugag\\OneDrive\\Área de Trabalho\\amanaCotador\\Back-End\\amanaWebAPI\\amanaWebAPI\\amanaWebAPI.csproj",
       "projectName": "amanaWebAPI",
       "projectPath": "C:\\Users\\gugag\\OneDrive\\Área de Trabalho\\amanaCotador\\Back-End\\amanaWebAPI\\amanaWebAPI\\amanaWebAPI.csproj",
       "packagesPath": "C:\\Users\\gugag\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\gugag\\OneDrive\\Área de Trabalho\\amanaCotador\\Back-End\\amanaWebAPI\\amanaWebAPI\\obj\\",
->>>>>>> main
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\43017102807\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\gugag\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -7614,12 +7601,6 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "downloadDependencies": [
-          {
-            "name": "Microsoft.NETCore.App.Host.win-x64",
-            "version": "[5.0.12, 5.0.12]"
-          }
-        ],
         "frameworkReferences": {
           "Microsoft.AspNetCore.App": {
             "privateAssets": "none"
@@ -7628,12 +7609,16 @@
             "privateAssets": "all"
           }
         },
-<<<<<<< HEAD
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
-=======
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
->>>>>>> main
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problema ao ler o arquivo de cache C:\\Users\\gugag\\OneDrive\\Área de Trabalho\\amanaCotador\\Back-End\\amanaWebAPI\\amanaWebAPI\\obj\\project.nuget.cache: Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
 }

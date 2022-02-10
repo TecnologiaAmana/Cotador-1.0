@@ -138,3 +138,18 @@
 .table_result tr:hover {
   background-color: #ddd;
 }
+
+.btnGerarPdf {
+  width: 120px;
+  height: 50px;
+
+  background: #C86C50;
+  cursor: pointer;
+
+  margin-top: 20px;
+}
+
+.btn_calcular:hover {
+  border-bottom:1px solid  #f2f2f2;
+  box-shadow: 0 0.5em 0.5em -0.4em #f2f2f2;
+}

@@ -4,6 +4,10 @@ import api from './services/api'
 import './App.css';
 import CotacoesPDF from "./components/CotacoesPDF";
 import logo from './assets/logoAmana.png'
+import { TableResult } from "./components/Table";
+import { Header } from "./components/Header";
+import { Print } from "./services/PrintCompleteTable";
+import generatePDF from "./services/jsPdfPrinter";
 
 function App() {
   const [seguradoras, setSeguradoras] = useState([]);
@@ -69,6 +73,7 @@ function App() {
     api.get("culturas/" + idCultura).then(response => {
       if (response.status === 200) {
         setCulturaBuscada(response.data)
+        console.log(response.data)
       }
     })
 
@@ -113,10 +118,7 @@ function App() {
 
   return (
     <div className="App grid">
-      <header className="header">
-        <img src={logo} alt="Logo amana" />
-      </header>
-
+      <Header />
       <main>
         <form onSubmit={BuscarTaxas}>
           <div className="row_select">
@@ -217,53 +219,10 @@ function App() {
                   year: 'numeric', month: 'numeric', day: "numeric"
                 }).format(data)}</span>
               </div>
-              <table className="table_result" id="main_table">
-                <thead>
-                  <tr>
-                    <th>Seguradora</th>
-                    <th>Área (HA)</th>
-                    <th>Valor Saca</th>
-                    <th>Nivel de Cobertura</th>
-                    <th>Produtividade Garantida</th>
-                    <th>LMGA Básica (R$)</th>
-                    <th>LMGA Replantio (R$)</th>
-                    <th>Prêmio Basica (R$)</th>
-                    <th>Prêmio Replantio (R$)</th>
-                    <th>Prêmio Total (R$)</th>
-                    <th>Subvenção Federal (R$)</th>
-                    <th>Prêmio C/Desconto Subv (R$)</th>
-                    <th>Prêmio Médio S/Subv (R$/HA)</th>
-                    <th>Prêmio Médio C/Subv (R$/HA)</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {
-                    taxas.map(taxa => {
-                      return (
-                        <tr key={taxa.idTaxa}>
-                          <td>{taxa.idPlantioNavigation.idSeguradoraNavigation.nomeSeguradora}</td>
-                          <td>{taxa.area}</td>
-                          <td>{taxa.maxSaca}</td>
-                          <td>{taxa.idNivelCoberturaNavigation.valorCobertura}</td>
-                          <td>{taxa.produtivadeGarantida.toFixed(2)}</td>
-                          <td>{taxa.lmgabasica.toFixed(2)}</td>
-                          <td>{taxa.valorLmgaReplantio.toFixed(2)}</td>
-                          <td>{taxa.premioBasica.toFixed(2)}</td>
-                          <td>{taxa.premioReplantio.toFixed(2)}</td>
-                          <td>{taxa.premioTotal.toFixed(2)}</td>
-                          <td>{taxa.subvencao.toFixed(2)}</td>
-                          <td>{taxa.premioSubvencao.toFixed(2)}</td>
-                          <td>{taxa.premioMedio.toFixed(2)}</td>
-                          <td>{taxa.premioMedioSubvencao.toFixed(2)}</td>
-                        </tr>
-                      )
-                    })
-                  }
-                </tbody>
-              </table>
+              {TableResult(taxas)}
             </div>
 
-            <button onClick={(e) => CotacoesPDF(taxas)}>TESTE</button>
+            <button className="btnGerarPdf" onClick={() => {generatePDF(taxas,municipioBuscado,cliente,culturaBuscada,data)}}>Gerar PDf Completo</button>
           </section>
         </div>
       </main>
