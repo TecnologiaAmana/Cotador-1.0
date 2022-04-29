@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "ANNUiz3CNRNY+e8JYL7XoEpphJiY3t60kY9t7Z9NbmzUxo3oFwjUXeJUpwKscpnd8rGxqJedWJbDck1CvGxl2Q==",
+  "dgSpecHash": "tyV3MFmCp23yRASCUq7X5G8PJzWiHN7MLk7yZ0lEN0iE/yoKot7Rdzq2ImfP7I2Uj/HDEOLG6tCqlyapqctAkw==",
   "success": true,
   "projectFilePath": "C:\\Users\\gugag\\OneDrive\\Área de Trabalho\\amanaCotador\\Back-End\\amanaWebAPI\\amanaWebAPI\\amanaWebAPI.csproj",
   "expectedPackageFiles": [
@@ -142,14 +142,8 @@
     "C:\\Users\\gugag\\.nuget\\packages\\system.xml.readerwriter\\4.3.0\\system.xml.readerwriter.4.3.0.nupkg.sha512",
     "C:\\Users\\gugag\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512",
     "C:\\Users\\gugag\\.nuget\\packages\\system.xml.xmldocument\\4.3.0\\system.xml.xmldocument.4.3.0.nupkg.sha512",
-    "C:\\Users\\gugag\\.nuget\\packages\\system.xml.xmlserializer\\4.3.0\\system.xml.xmlserializer.4.3.0.nupkg.sha512"
+    "C:\\Users\\gugag\\.nuget\\packages\\system.xml.xmlserializer\\4.3.0\\system.xml.xmlserializer.4.3.0.nupkg.sha512",
+    "C:\\Users\\gugag\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\5.0.13\\microsoft.netcore.app.host.win-x64.5.0.13.nupkg.sha512"
   ],
-  "logs": [
-    {
-      "code": "Undefined",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Problema ao ler o arquivo de cache C:\\Users\\gugag\\OneDrive\\Área de Trabalho\\amanaCotador\\Back-End\\amanaWebAPI\\amanaWebAPI\\obj\\project.nuget.cache: Invalid property identifier character: <. Path 'version', line 3, position 0."
-    }
-  ]
+  "logs": []
 }

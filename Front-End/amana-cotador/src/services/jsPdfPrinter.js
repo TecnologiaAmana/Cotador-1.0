@@ -1,5 +1,7 @@
+import { tab } from "@testing-library/user-event/dist/tab";
 import jsPDF from "jspdf";
 import "jspdf-autotable"
+import { CellHookData } from "jspdf-autotable";
 
 const generatePDF = (taxas,municipio,segurado,cultura,data) => {
     var options = {
@@ -92,7 +94,7 @@ const generatePDF = (taxas,municipio,segurado,cultura,data) => {
 }
 
 //   centeredText("AMANA", 35);
-
+  var heightTable = 0;
   // startY is basically margin-top
   doc.autoTable(tableColumn, tableRows, {
     startY : posicaoInicial+25,
@@ -101,8 +103,13 @@ const generatePDF = (taxas,municipio,segurado,cultura,data) => {
           //table.cell.styles.textColor = '#CC2D16';
           table.cell.styles.fillColor  = '#272727';
         }
+        console.log(table.table.finalY)
      }
   });
+
+  console.log(heightTable)
+
+  doc.text('teste',15,(posicaoInicial+30))
 
   doc.save(`cotacao_${dateStr}.pdf`);
 }

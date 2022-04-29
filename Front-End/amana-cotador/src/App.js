@@ -6,7 +6,6 @@ import CotacoesPDF from "./components/CotacoesPDF";
 import logo from './assets/logoAmana.png'
 import { TableResult } from "./components/Table";
 import { Header } from "./components/Header";
-import { Print } from "./services/PrintCompleteTable";
 import generatePDF from "./services/jsPdfPrinter";
 
 function App() {
